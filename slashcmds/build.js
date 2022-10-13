@@ -1,5 +1,7 @@
 const {SlashCommandBuilder}=require('@discordjs/builders');
 const chalk=require('chalk');
+const {readFileSync, writeFileSync}=require('node:fs');
+
 
 module.exports={
   data: new SlashCommandBuilder()
@@ -22,15 +24,23 @@ module.exports={
       )
     ),
   async execute(interaction, client) {
+    const raceBuilds=JSON.parse(
+      readFileSync('./raceBuilds.json', 'utf-8')
+    );
+    const raceBuild=raceBuilds
+      .find((raceBuild_) =>
+        `${ raceBuild.Manufacturer } ${ raceBuild['Car Name'] }`===returnedValue
+      );
+
+      console.log(raceBuild)
     console.log(`${ chalk.greenBright('[EVENT ACKNOWLEDGED]') } interactionCreate with command build`);
     const car=interaction.options.getString('car');
-    const type=interaction.options.getString('type');
+    // const type=interaction.options.getString('type');
 
-    const builds=require("../cars.json");
     await interaction.reply({
       embeds: [{
-        title: `${ car } | ${ type } Build`,
-        description: `\`\`\`${ builds[car][type]||"There is no available build for this selection :( \nWant to add your own? Head to https://github.com/xWass/HeatBuilder/blob/master/cars.json and open a pull request!" }\`\`\``,
+        title: `${ car } Build`,
+        description: `\`\`\`${ car ||"There is no available build for this selection :( \nWant to add your own? Head to https://github.com/xWass/HeatBuilder/blob/master/cars.json and open a pull request!" }\`\`\``,
         color: 'GREEN',
       }],
       ephemeral: true
