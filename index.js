@@ -196,7 +196,7 @@ client.on('interactionCreate', async (interaction) => {
   "Volvo Amazon P130 1970 Classic",
 ];
 
-        if (focusedValue.length <=1) {
+        if (focusedValue.length <=2) {
             return interaction.respond([])
         }
         const filtered=choices.filter(choice => choice.toLowerCase().includes(focusedValue.toLowerCase()));

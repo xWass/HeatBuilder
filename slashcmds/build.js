@@ -26,11 +26,11 @@ module.exports={
     const car=interaction.options.getString('car');
     const type=interaction.options.getString('type');
 
-    const builds=require("../cars.json")
+    const builds=require("../cars.json");
     await interaction.reply({
       embeds: [{
         title: `${ car } | ${ type } Build`,
-        description: `\`\`\`${ builds[car][type]}\`\`\``|| "There is no available build for this selection :( \nWant to add your own? Head to https://github.com/xWass/HeatBuilder/blob/master/cars.json and open a pull request!",
+        description: `\`\`\`${ builds[car][type]||"There is no available build for this selection :( \nWant to add your own? Head to https://github.com/xWass/HeatBuilder/blob/master/cars.json and open a pull request!" }\`\`\``,
         color: 'GREEN',
       }],
       ephemeral: true
