@@ -67,7 +67,7 @@ for (const file of commandFiles) {
 client.on('interactionCreate', async (interaction) => {
 
     const raceBuilds=JSON.parse(
-        readFileSync('./raceBuilds.json', 'utf-8')
+        readFileSync('./builds/track.json', 'utf-8')
     );
 
     if (interaction.isAutocomplete()&&interaction.commandName==="build") {

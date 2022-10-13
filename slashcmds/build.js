@@ -30,19 +30,19 @@ module.exports={
     let build;
     if (type==="Track") {
       build=JSON.parse(
-        readFileSync('./raceBuilds.json', 'utf-8')
+        readFileSync('./builds/track.json', 'utf-8')
       );
     } else if (type === "Off-Road") {
       build=JSON.parse(
-        readFileSync('./offroadBuilds.json', 'utf-8')
+        readFileSync('./builds/offroad.json', 'utf-8')
       );
     } else if (type==="Drag") {
       build=JSON.parse(
-        readFileSync('./dragBuilds.json', 'utf-8')
+        readFileSync('./builds/drag.json', 'utf-8')
       );
     } else if (type==="Drift") {
       build=JSON.parse(
-        readFileSync('./driftBuilds.json', 'utf-8')
+        readFileSync('./builds/drift.json', 'utf-8')
       );
     }
     const carUnsplit=interaction.options.getString('car');
