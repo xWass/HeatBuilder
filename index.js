@@ -3,7 +3,7 @@ const chalk=require('chalk');
 const {
     Client, Collection, Intents, MessageEmbed,
 }=require('discord.js');
-import {readFileSync, writeFileSync} from 'node:fs';
+const {readFileSync, writeFileSync} = require('node:fs');
 
 const intents=new Intents();
 intents.add(
