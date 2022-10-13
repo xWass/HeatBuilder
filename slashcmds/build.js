@@ -27,20 +27,45 @@ module.exports={
       )
     ),
   async execute(interaction, client) {
-    const raceBuild=raceBuilds
-      .find((raceBuild_) =>
-        `${ raceBuild.Manufacturer } ${ raceBuild['Car Name'] }`===returnedValue
-      );
 
-      console.log(returnedValue)
     console.log(`${ chalk.greenBright('[EVENT ACKNOWLEDGED]') } interactionCreate with command build`);
-    const car=interaction.options.getString('car');
-    // const type=interaction.options.getString('type');
+
+    const carUnsplit=interaction.options.getString('car');
+    const car=carUnsplit.split(" ​")
+    const manufacturer=car[0]
+    const carName=car[1]
+
+    const data = raceBuilds.find(x => {
+      return x["Manufacturer"]===manufacturer&&x["Car Name"]===carName;
+    })
+    /*
+    time for VARIABLES
+    */
+    const engine=data["Engine"]
+    const crank=data["Crankshaft"]
+    const ecu=data["ECU"]
+    const cooling=data["Cooling"]
+    const exhaust=data["Exhaust"]
+    const turbo=data["Turbo"]
+    const nos=data["Nitrous System"]
+    const suspension=data["Suspension"]
+    const brakes=data["Brakes"]
+    const tires=data["Tires"]
+    const clutch=data["Clutch"]
+    const gearbox=data["Gearbox"]
+    const diff=data["Differential"]
+    const active=data["Auxiliary (Active)"]
+    const passive=data["Auxiliary (Passive)"]
+    const sensitivity=data["Sensitivity"]
+    const downforce=data["Downforce"]
+
+
+    const type=interaction.options.getString('type');
 
     await interaction.reply({
       embeds: [{
-        title: `${ car } Build`,
-        description: `\`\`\`${ car ||"There is no available build for this selection :( \nWant to add your own? Head to https://github.com/xWass/HeatBuilder/blob/master/cars.json and open a pull request!" }\`\`\``,
+        title: `${ carUnsplit } | ${type} Build`,
+        description: `\`\`\`Engine: ${engine} \nCrankshaft: ${crank} \nECU: ${ecu} \nCooling: ${cooling} \nExhaust: ${exhaust} \nTurbo: ${turbo} \nNitrous: ${nos} \nSuspension: ${suspension} \nBrakes: ${brakes} \nTires: ${tires} \nClutch: ${clutch} \nGearbox: ${gearbox} \nDifferential: ${diff} \nActive Auxiliary: ${active} \nPassive Auxiliary: ${passive} \n\nLIVE TUNING: \nSteering Sensitivity: ${sensitivity} \nDownforce: ${downforce}\`\`\``,
         color: 'GREEN',
       }],
       ephemeral: true
