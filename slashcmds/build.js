@@ -25,7 +25,6 @@ module.exports={
     console.log(`${ chalk.greenBright('[EVENT ACKNOWLEDGED]') } interactionCreate with command build`);
     const car=interaction.options.getString('car');
     const type=interaction.options.getString('type');
-    const carObj=require("../cars.json");
     await interaction.reply({
       embeds: [{
         title: `${ car } | ${ type } Build`,
