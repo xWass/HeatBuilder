@@ -32,7 +32,7 @@ module.exports={
         `${ raceBuild.Manufacturer } ${ raceBuild['Car Name'] }`===returnedValue
       );
 
-      console.log(raceBuild)
+      console.log(returnedValue)
     console.log(`${ chalk.greenBright('[EVENT ACKNOWLEDGED]') } interactionCreate with command build`);
     const car=interaction.options.getString('car');
     // const type=interaction.options.getString('type');
