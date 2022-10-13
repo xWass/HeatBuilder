@@ -1,9 +1,6 @@
 const {SlashCommandBuilder}=require('@discordjs/builders');
 const chalk=require('chalk');
 const {readFileSync, writeFileSync}=require('node:fs');
-const raceBuilds=JSON.parse(
-  readFileSync('./raceBuilds.json', 'utf-8')
-);
 
 
 module.exports={
@@ -29,13 +26,31 @@ module.exports={
   async execute(interaction, client) {
 
     console.log(`${ chalk.greenBright('[EVENT ACKNOWLEDGED]') } interactionCreate with command build`);
-
+    const type=interaction.options.getString('type');
+    let build;
+    if (type==="Track") {
+      build=JSON.parse(
+        readFileSync('./raceBuilds.json', 'utf-8')
+      );
+    } else if (type === "Off-Road") {
+      build=JSON.parse(
+        readFileSync('./offroadBuilds.json', 'utf-8')
+      );
+    } else if (type==="Drag") {
+      build=JSON.parse(
+        readFileSync('./dragBuilds.json', 'utf-8')
+      );
+    } else if (type==="Drift") {
+      build=JSON.parse(
+        readFileSync('./driftBuilds.json', 'utf-8')
+      );
+    }
     const carUnsplit=interaction.options.getString('car');
     const car=carUnsplit.split(" ​")
     const manufacturer=car[0]
     const carName=car[1]
 
-    const data = raceBuilds.find(x => {
+    const data = build.find(x => {
       return x["Manufacturer"]===manufacturer&&x["Car Name"]===carName;
     })
     /*
@@ -58,15 +73,18 @@ module.exports={
     const passive=data["Auxiliary (Passive)"]
     const sensitivity=data["Sensitivity"]
     const downforce=data["Downforce"]
+    const cost = data["Parts Cost"]
 
 
-    const type=interaction.options.getString('type');
 
     await interaction.reply({
       embeds: [{
         title: `${ carUnsplit } | ${type} Build`,
-        description: `\`\`\`Engine: ${engine} \nCrankshaft: ${crank} \nECU: ${ecu} \nCooling: ${cooling} \nExhaust: ${exhaust} \nTurbo: ${turbo} \nNitrous: ${nos} \nSuspension: ${suspension} \nBrakes: ${brakes} \nTires: ${tires} \nClutch: ${clutch} \nGearbox: ${gearbox} \nDifferential: ${diff} \nActive Auxiliary: ${active} \nPassive Auxiliary: ${passive} \n\nLIVE TUNING: \nSteering Sensitivity: ${sensitivity} \nDownforce: ${downforce}\`\`\``,
+        description: `\`\`\`Engine: ${engine||"None"} \nCrankshaft: ${crank||"None"} \nECU: ${ecu||"None"} \nCooling: ${cooling||"None"} \nExhaust: ${exhaust||"None"} \nTurbo: ${turbo||"None"} \nNitrous: ${nos||"None"} \nSuspension: ${suspension||"None"} \nBrakes: ${brakes||"None"} \nTires: ${tires||"None"} \nClutch: ${clutch||"None"} \nGearbox: ${gearbox||"None"} \nDifferential: ${diff||"None"} \nActive Auxiliary: ${active||"None"} \nPassive Auxiliary: ${passive||"None"} \n\nLIVE TUNING: \nSteering Sensitivity: ${sensitivity||"None"} \nDownforce: ${downforce||"None"} \n\nCOST TO BUILD: ${cost||"N/A"}\`\`\``,
         color: 'GREEN',
+        footer: {
+          text: `Thanks to Orchan#6179 for supplying the builds and to the Caliber Gaming staff team for the support.\nMuch love - xWass <3`,
+        },
       }],
       ephemeral: true
     });
