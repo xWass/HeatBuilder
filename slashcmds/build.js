@@ -1,6 +1,9 @@
 const {SlashCommandBuilder}=require('@discordjs/builders');
 const chalk=require('chalk');
 const {readFileSync, writeFileSync}=require('node:fs');
+const raceBuilds=JSON.parse(
+  readFileSync('./raceBuilds.json', 'utf-8')
+);
 
 
 module.exports={
@@ -24,9 +27,6 @@ module.exports={
       )
     ),
   async execute(interaction, client) {
-    const raceBuilds=JSON.parse(
-      readFileSync('./raceBuilds.json', 'utf-8')
-    );
     const raceBuild=raceBuilds
       .find((raceBuild_) =>
         `${ raceBuild.Manufacturer } ${ raceBuild['Car Name'] }`===returnedValue
