@@ -13,7 +13,7 @@ module.exports={
             .setRequired(true)
         ),
     async execute(interaction) {
-        const valid=['928624781731983380', '176152457284550656'];
+        const valid=['928624781731983380'];
         if (!valid.includes(interaction.member.id)) {
             interaction.reply({
                 embeds: [{
@@ -43,7 +43,7 @@ module.exports={
                         title: 'Output',
                         description: `Output: \`\`\`${ stdout||"Completed with no output." }\`\`\``,
                     }],
-                    ephemeral: false
+                    ephemeral: true
                 });
             }
         });

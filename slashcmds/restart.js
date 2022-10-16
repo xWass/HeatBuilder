@@ -24,7 +24,7 @@ module.exports={
             embeds: [{
                 title: "Restarting. See you in 30 seconds!"
             }],
-            ephemeral: false
+            ephemeral: true
         });
 
         try {

@@ -23,7 +23,7 @@ module.exports={
             embeds: [{
                 title: "Shutting down... \nOnly xWass can save me now..."
             }],
-            ephemeral: false
+            ephemeral: true
         });
 
         try {
