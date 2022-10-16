@@ -11,7 +11,7 @@ module.exports={
 
         await interaction.reply({
             embeds: [{
-                title: "Restarting. See you in 30 seconds!"
+                title: "Need support? Join here! \nhttps://discord.gg/X58z9eQGek"
             }],
             ephemeral: true
         });
