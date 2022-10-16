@@ -80,7 +80,7 @@ module.exports={
     await interaction.reply({
       embeds: [{
         title: `${ carUnsplit } | ${type} Build`,
-        description: `\`\`\`Engine: ${engine||"None"} \nCrankshaft: ${crank||"None"} \nECU: ${ecu||"None"} \nCooling: ${cooling||"None"} \nExhaust: ${exhaust||"None"} \nTurbo: ${turbo||"None"} \nNitrous: ${nos||"None"} \nSuspension: ${suspension||"None"} \nBrakes: ${brakes||"None"} \nTires: ${tires||"None"} \nClutch: ${clutch||"None"} \nGearbox: ${gearbox||"None"} \nDifferential: ${diff||"None"} \nActive Auxiliary: ${active||"None"} \nPassive Auxiliary: ${passive||"None"} \n\nLIVE TUNING: \nSteering Sensitivity: ${sensitivity||"None"} \nDownforce: ${downforce||"None"} \n\nCOST TO BUILD: ${cost||"N/A"}\`\`\``,
+        description: `\`\`\`Engine: ${engine||"None"} \nCrankshaft: ${crank||"None"} \nECU: ${ecu||"None"} \nCooling: ${cooling||"None"} \nExhaust: ${exhaust||"None"} \nTurbo: ${turbo||"None"} \nNitrous: ${nos||"None"} \nSuspension: ${suspension||"None"} \nBrakes: ${brakes||"None"} \nTires: ${tires||"None"} \nClutch: ${clutch||"None"} \nGearbox: ${gearbox||"None"} \nDifferential: ${diff||"None"} \nActive Auxiliary: ${active||"None"} \nPassive Auxiliary: ${passive||"None"} \n\nLIVE TUNING: \nSteering Sensitivity: ${sensitivity||"0"} \nDownforce: ${downforce||"0"} \n\nCOST TO BUILD: ${cost||"N/A"}\`\`\``,
         color: 'GREEN',
         footer: {
           text: `Thanks to Orchan#6179 and PCNW for supplying the builds and to the Caliber Gaming staff team for the support.\nMuch love - xWass <3`,
