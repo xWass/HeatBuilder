@@ -2,7 +2,6 @@ const {SlashCommandBuilder}=require('@discordjs/builders');
 const chalk=require('chalk');
 const {readFileSync, writeFileSync}=require('node:fs');
 
-
 module.exports={
   data: new SlashCommandBuilder()
     .setName('build')
@@ -53,6 +52,8 @@ module.exports={
     const data = build.find(x => {
       return x["Manufacturer"]===manufacturer&&x["Car Name"]===carName;
     })
+
+
     /*
     time for VARIABLES
     */
