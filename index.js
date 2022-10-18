@@ -66,11 +66,12 @@ for (const file of commandFiles) {
 
 client.on('interactionCreate', async (interaction) => {
 
-    const raceBuilds=JSON.parse(
-        readFileSync('./builds/track.json', 'utf-8')
-    );
+
 
     if (interaction.isAutocomplete()&&interaction.commandName==="build") {
+        const raceBuilds=JSON.parse(
+            readFileSync('./builds/track.json', 'utf-8')
+        );
         const focusedValue=interaction.options.getFocused();
         const choices=raceBuilds
             .map((raceBuild) =>
@@ -85,6 +86,25 @@ client.on('interactionCreate', async (interaction) => {
             filtered.map(choice => ({name: choice, value: choice}))
         )
         return;
+    } else if (interaction.isAutocomplete()&&interaction.commandName==="orchan") {
+        const raceBuilds=JSON.parse(
+            readFileSync('./builds/orchanTrack.json', 'utf-8')
+        );
+        const focusedValue=interaction.options.getFocused();
+        const choices=raceBuilds
+            .map((raceBuild) =>
+                `${ raceBuild.Manufacturer } ​${ raceBuild['Car Name'] }`
+            );
+
+        if (focusedValue.length<=2) {
+            return interaction.respond([]);
+        }
+        const filtered=choices.filter(choice => choice.toLowerCase().includes(focusedValue.toLowerCase()));
+        await interaction.respond(
+            filtered.map(choice => ({name: choice, value: choice}))
+        );
+        return;
+
     }
     const command=client.SlashCommands.get(interaction.commandName);
 
