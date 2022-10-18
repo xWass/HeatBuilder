@@ -31,7 +31,7 @@ module.exports={
       build=JSON.parse(
         readFileSync('./builds/track.json', 'utf-8')
       );
-    } else if (type === "Off-Road") {
+    } else if (type==="Off-Road") {
       build=JSON.parse(
         readFileSync('./builds/offroad.json', 'utf-8')
       );
@@ -44,47 +44,73 @@ module.exports={
         readFileSync('./builds/drift.json', 'utf-8')
       );
     }
-    const carUnsplit=interaction.options.getString('car');
-    const car=carUnsplit.split(" ​")
-    const manufacturer=car[0]
-    const carName=car[1]
-
-    const data = build.find(x => {
-      return x["Manufacturer"]===manufacturer&&x["Car Name"]===carName;
-    })
+    const car=interaction.options.getString('car');
+    const data=build.find(x => {
+      return x["Car"]===car;
+    });
 
 
     /*
     time for VARIABLES
     */
-    const engine=data["Engine"]
-    const crank=data["Crankshaft"]
-    const ecu=data["ECU"]
-    const cooling=data["Cooling"]
-    const exhaust=data["Exhaust"]
-    const turbo=data["Turbo"]
-    const nos=data["Nitrous System"]
-    const suspension=data["Suspension"]
-    const brakes=data["Brakes"]
-    const tires=data["Tires"]
-    const clutch=data["Clutch"]
-    const gearbox=data["Gearbox"]
-    const diff=data["Differential"]
-    const active=data["Auxiliary (Active)"]
-    const passive=data["Auxiliary (Passive)"]
-    const sensitivity=data["Sensitivity"]
-    const downforce=data["Downforce"]
-    const cost = data["Parts Cost"]
+    const engine=data["Engine"];
+    const crank=data["Crankshaft"];
+    const ecu=data["ECU"];
+    const cooling=data["Cooling"];
+    const exhaust=data["Exhaust"];
+    const turbo=data["Turbo"];
+    const nos=data["NOS"];
+    const suspension=data["Suspension"];
+    const brakes=data["Brakes"];
+    const tires=data["Tires"];
+    const clutch=data["Clutch"];
+    const gearbox=data["Gearbox"];
+    const diff=data["Differential"];
+    const active=data["Aux 1"];
+    const passive=data["Aux 2"];
+    const sensitivity=data["Steering Sensitivity"];
+    const downforce=data["Downforce"];
+    const tract=data["Traction"];
+    const dstyle=data["Drift Style"];
+    const trackRank=data["Track Rank"]
+    const aerion=data["Aerion Time"]
+    const sonic=data["Sonic Time"]
+
 
 
 
     await interaction.reply({
       embeds: [{
-        title: `${ carUnsplit } | ${type} Build`,
-        description: `\`\`\`Engine: ${engine||"None"} \nCrankshaft: ${crank||"None"} \nECU: ${ecu||"None"} \nCooling: ${cooling||"None"} \nExhaust: ${exhaust||"None"} \nTurbo: ${turbo||"None"} \nNitrous: ${nos||"None"} \nSuspension: ${suspension||"None"} \nBrakes: ${brakes||"None"} \nTires: ${tires||"None"} \nClutch: ${clutch||"None"} \nGearbox: ${gearbox||"None"} \nDifferential: ${diff||"None"} \nActive Auxiliary: ${active||"None"} \nPassive Auxiliary: ${passive||"None"} \n\nLIVE TUNING: \nSteering Sensitivity: ${sensitivity||"0"} \nDownforce: ${downforce||"0"} \n\nCOST TO BUILD: ${cost||"N/A"}\`\`\``,
+        title: `${ car } | ${ type } Build`,
+        description: `\`\`\`
+TRACK RANKING: ${trackRank}\n
+TIMES:
+Aerion: ${aerion}
+Sonic: ${sonic}\n
+Engine: ${ engine||"None" }
+Crankshaft: ${ crank||"None" }
+ECU: ${ ecu||"None" }
+Cooling: ${ cooling||"None" }
+Exhaust: ${ exhaust||"None" }
+Turbo: ${ turbo||"None" }
+Nitrous: ${ nos||"None" }
+Suspension: ${ suspension||"None" }
+Brakes: ${ brakes||"None" }
+Tires: ${ tires||"None" } 
+Clutch: ${ clutch||"None" }
+Gearbox: ${ gearbox||"None" }
+Differential: ${ diff||"None" } 
+Active Auxiliary: ${ active||"None" }
+Passive Auxiliary: ${ passive||"None" }\n
+LIVE TUNING:
+Steering Sensitivity: ${ sensitivity||"0" }
+Downforce: ${ downforce||"0" }
+Tracton Control: ${tract||"N/A"}
+Drift Style: ${dstyle||"N/A"}
+\`\`\``,
         color: 'GREEN',
         footer: {
-          text: `Thanks to Orchan#6179 and PCNW for supplying the builds and to the Caliber Gaming staff team for the support.\nMuch love - xWass <3`,
+          text: `Thanks to Orchan#6179 and PCNW for supplying the builds and to the Caliber Gaming staff team for the support.Much love - xWass <3`,
         },
       }],
       ephemeral: true

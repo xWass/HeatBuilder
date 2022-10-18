@@ -74,7 +74,7 @@ client.on('interactionCreate', async (interaction) => {
         const focusedValue=interaction.options.getFocused();
         const choices=raceBuilds
             .map((raceBuild) =>
-                `${ raceBuild.Manufacturer } ​${ raceBuild['Car Name'] }`
+                `${ raceBuild["Car"] }`
             );
 
         if (focusedValue.length <=2) {
