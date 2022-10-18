@@ -41,7 +41,7 @@ module.exports={
                 interaction.followUp({
                     embeds: [{
                         title: 'Output',
-                        description: `Output: \`\`\`${ stdout||"Completed with no output." }\`\`\``,
+                        description: `\`\`\`${ stdout||"Completed with no output." }\`\`\``,
                     }],
                     ephemeral: false
                 });

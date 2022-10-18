@@ -107,7 +107,7 @@ Drift Style: ${dstyle||"N/A"}
 \`\`\``,
         color: 'GREEN',
         footer: {
-          text: `Thanks to Orchan#6179 and PCNW for supplying the builds and to the Caliber Gaming staff team for the support.Much love - xWass <3`,
+          text: `Thanks to Orchan#6179 and PCNW for supplying the builds and to the Caliber Gaming staff team for the support.\nMuch love - xWass <3`,
         },
       }],
       ephemeral: true
