@@ -54,7 +54,8 @@ module.exports={
       interaction.reply({
         embeds: [{
           description: "There is not an available for this car and type combination. \nWish to contribute one? Head over to: \nhttps://github.com/xWass/HeatBuilder"
-        }]
+        }],
+        ephemeral: true
       });
       return;
     }
