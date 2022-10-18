@@ -17,6 +17,10 @@ module.exports={
       .setDescription("Select a build type!")
       .addChoices(
         {name: 'Track', value: 'Track'},
+        {name: 'Drag', value: 'Drag'},
+        {name: 'Drift', value: 'Drift'},
+        {name: 'Off-Road', value: 'Off-Road'},
+
       )
     ),
   async execute(interaction, client) {
