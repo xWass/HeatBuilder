@@ -53,7 +53,11 @@ module.exports={
     if (!data) {
       interaction.reply({
         embeds: [{
-          description: "There is not an available build for this car and type combination.\nTry using /orchan instead! \nWish to contribute a build? \nHead over to: \nhttps://github.com/xWass/HeatBuilder"
+          title: "There is not an available build for this car and type combination.",
+          description: "Try using /orchan instead!",
+          footer: {
+            text: "Want to contribute? Head over to: https://github.com/xWass/HeatBuilder"
+          }
         }],
         ephemeral: true
       });
