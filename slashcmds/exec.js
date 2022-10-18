@@ -43,7 +43,7 @@ module.exports={
                         title: 'Output',
                         description: `Output: \`\`\`${ stdout||"Completed with no output." }\`\`\``,
                     }],
-                    ephemeral: true
+                    ephemeral: false
                 });
             }
         });
