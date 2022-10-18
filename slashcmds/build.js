@@ -46,6 +46,14 @@ module.exports={
       return x["Car"]===car;
     });
 
+    if (!data) {
+      interaction.reply({
+        embeds: [{
+          description: "There is not an available for this car and type combination. \nWish to contribute one? Head over to: \nhttps://github.com/xWass/HeatBuilder"
+        }]
+      });
+      return;
+    }
 
     /*
     time for VARIABLES
@@ -69,42 +77,152 @@ module.exports={
     const downforce=data["Downforce"];
     const tract=data["Traction"];
     const dstyle=data["Drift Style"];
-    const trackRank=data["Track Rank"]
-    const aerion=data["Aerion Time"]
-    const sonic=data["Sonic Time"]
+
+    const trackRank=data["Track Rank"];
+    const driftRank=data["Drift Rank"];
+    const dragRank=data["Drag Rank"];
+    const offroadRank=data["Offroad Rank"];
+
+    const dscore=data["Avg Drift Score"];
+    const aerion=data["Aerion Time"];
+    const sonic=data["Sonic Time"];
+    const htv=data["HTV-2"]
+    const rumble=data["Rumble"]
+    const combined=data["Combined Time"]
 
 
+    const sixty=data["0-60"];
+    const quarter=data["1/4 Mile"]
 
+
+    const trackStr=
+      `\`\`\`
+TRACK RANKING: ${ trackRank }\n
+TIMES:
+Aerion: ${ aerion||"N/A" }
+Sonic: ${ sonic||"N/A" }\n
+Engine: ${ engine||"N/A" }
+Crankshaft: ${ crank||"N/A" }
+ECU: ${ ecu||"N/A" }
+Cooling: ${ cooling||"N/A" }
+Exhaust: ${ exhaust||"N/A" }
+Turbo: ${ turbo||"N/A" }
+Nitrous: ${ nos||"N/A" }
+Suspension: ${ suspension||"N/A" }
+Brakes: ${ brakes||"N/A" }
+Tires: ${ tires||"N/A" } 
+Clutch: ${ clutch||"N/A" }
+Gearbox: ${ gearbox||"N/A" }
+Differential: ${ diff||"N/A" } 
+Active Auxiliary: ${ active||"N/A" }
+Passive Auxiliary: ${ passive||"N/A" }\n
+LIVE TUNING:
+Steering Sensitivity: ${ sensitivity||"0" }
+Downforce: ${ downforce||"0" }
+Tracton Control: ${ tract||"N/A" }
+Drift Style: ${ dstyle||"N/A" }
+\`\`\``;
+    
+    const driftStr=
+`\`\`\`
+DRIFT RANKING: ${ driftRank }\n
+Average Drift Score:${ dscore||"N/A" }\n
+Engine: ${ engine||"N/A" }
+Crankshaft: ${ crank||"N/A" }
+ECU: ${ ecu||"N/A" }
+Cooling: ${ cooling||"N/A" }
+Exhaust: ${ exhaust||"N/A" }
+Turbo: ${ turbo||"N/A" }
+Nitrous: ${ nos||"N/A" }
+Suspension: ${ suspension||"N/A" }
+Brakes: ${ brakes||"N/A" }
+Tires: ${ tires||"N/A" } 
+Clutch: ${ clutch||"N/A" }
+Gearbox: ${ gearbox||"N/A" }
+Differential: ${ diff||"N/A" } 
+Active Auxiliary: ${ active||"N/A" }
+Passive Auxiliary: ${ passive||"N/A" }\n
+LIVE TUNING:
+Steering Sensitivity: ${ sensitivity||"0" }
+Downforce: ${ downforce||"0" }
+Tracton Control: ${ tract||"N/A" }
+Drift Style: ${ dstyle||"N/A" }
+\`\`\``;
+    
+    const dragStr=
+`\`\`\`
+DRAG RANKING: ${ dragRank }\n
+SPEEDS:
+0-60: ${sixty||"N/A"}
+1/4 Mile: ${quarter||"N/A"}\n
+Engine: ${ engine||"N/A" }
+Crankshaft: ${ crank||"N/A" }
+ECU: ${ ecu||"N/A" }
+Cooling: ${ cooling||"N/A" }
+Exhaust: ${ exhaust||"N/A" }
+Turbo: ${ turbo||"N/A" }
+Nitrous: ${ nos||"N/A" }
+Suspension: ${ suspension||"N/A" }
+Brakes: ${ brakes||"N/A" }
+Tires: ${ tires||"N/A" } 
+Clutch: ${ clutch||"N/A" }
+Gearbox: ${ gearbox||"N/A" }
+Differential: ${ diff||"N/A" } 
+Active Auxiliary: ${ active||"N/A" }
+Passive Auxiliary: ${ passive||"N/A" }\n
+LIVE TUNING:
+Steering Sensitivity: ${ sensitivity||"0" }
+Downforce: ${ downforce||"0" }
+Tracton Control: ${ tract||"N/A" }
+Drift Style: ${ dstyle||"N/A" }
+\`\`\``;
+    
+    const offroadStr=
+      `\`\`\`
+DRAG RANKING: ${ offroadRank }\n
+TIMES:
+HTV-2: ${htv||"N/A"}
+Rumble: ${rumble||"N/A"}
+Combined: ${combined||"N/A"}
+Engine: ${ engine||"N/A" }
+Crankshaft: ${ crank||"N/A" }
+ECU: ${ ecu||"N/A" }
+Cooling: ${ cooling||"N/A" }
+Exhaust: ${ exhaust||"N/A" }
+Turbo: ${ turbo||"N/A" }
+Nitrous: ${ nos||"N/A" }
+Suspension: ${ suspension||"N/A" }
+Brakes: ${ brakes||"N/A" }
+Tires: ${ tires||"N/A" } 
+Clutch: ${ clutch||"N/A" }
+Gearbox: ${ gearbox||"N/A" }
+Differential: ${ diff||"N/A" } 
+Active Auxiliary: ${ active||"N/A" }
+Passive Auxiliary: ${ passive||"N/A" }\n
+LIVE TUNING:
+Steering Sensitivity: ${ sensitivity||"0" }
+Downforce: ${ downforce||"0" }
+Tracton Control: ${ tract||"N/A" }
+Drift Style: ${ dstyle||"N/A" }
+\`\`\``;
+
+
+    
+    let finalStr;
+    if (type==="Track") {
+      finalStr= trackStr
+    } else if (type==="Off-Road") {
+      finalStr= offroadStr
+    } else if (type==="Drag") {
+      finalStr= dragStr
+    } else if (type==="Drift") {
+      finalStr= driftStr
+    }
 
     await interaction.reply({
       embeds: [{
         title: `${ car } | ${ type } Build`,
-        description: `\`\`\`
-TRACK RANKING: ${trackRank}\n
-TIMES:
-Aerion: ${aerion}
-Sonic: ${sonic}\n
-Engine: ${ engine||"None" }
-Crankshaft: ${ crank||"None" }
-ECU: ${ ecu||"None" }
-Cooling: ${ cooling||"None" }
-Exhaust: ${ exhaust||"None" }
-Turbo: ${ turbo||"None" }
-Nitrous: ${ nos||"None" }
-Suspension: ${ suspension||"None" }
-Brakes: ${ brakes||"None" }
-Tires: ${ tires||"None" } 
-Clutch: ${ clutch||"None" }
-Gearbox: ${ gearbox||"None" }
-Differential: ${ diff||"None" } 
-Active Auxiliary: ${ active||"None" }
-Passive Auxiliary: ${ passive||"None" }\n
-LIVE TUNING:
-Steering Sensitivity: ${ sensitivity||"0" }
-Downforce: ${ downforce||"0" }
-Tracton Control: ${tract||"N/A"}
-Drift Style: ${dstyle||"N/A"}
-\`\`\``,
+        description: finalStr,
         color: 'GREEN',
         footer: {
           text: `Thanks to Orchan#6179 and PCNW for supplying the builds and to the Caliber Gaming staff team for the support.\nMuch love - xWass <3`,
