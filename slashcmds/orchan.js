@@ -88,19 +88,11 @@ module.exports={
             }],
             ephemeral: true
         });
-        const usage=JSON.parse(
-            readFileSync('./usage.json', 'utf-8')
-        );
-        let static=usage.build.count
-        let original=usage.orchan.count;
-        writeFileSync('./usage.json', `{
-    "build": {
-        "count": ${static}
-    },
-    "orchan": {
-        "count": ${original+1}
-    }
-}`);
+        const json=require("./usage.json");
+
+        json.orchan.count++;
+
+        writeFileSync("./usage.json", JSON.stringify(json));
 
     }
 };

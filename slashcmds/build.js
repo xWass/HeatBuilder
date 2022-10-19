@@ -241,18 +241,10 @@ Drift Style: ${ dstyle||"N/A" }
       }],
       ephemeral: true
     });
-    const usage=JSON.parse(
-      readFileSync('./usage.json', 'utf-8')
-    );
-    let static=usage.build.count;
-    let original=usage.orchan.count;
-    writeFileSync('./usage.json', `{
-    "build": {
-        "count": ${ static+1 }
-    },
-    "orchan": {
-        "count": ${ original }
-    }
-}`);
+    const json=require("./usage.json");
+
+    json.build.count++;
+
+    writeFileSync("./usage.json", JSON.stringify(json));
   }
 };
