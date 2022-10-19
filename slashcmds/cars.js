@@ -9,11 +9,6 @@ module.exports={
     async execute(interaction) {
         console.log(`${ chalk.greenBright('[EVENT ACKNOWLEDGED]') } interactionCreate with command cars`);
         interaction.reply({
-            embeds: [{
-                title: "Here's a list of all the cars!"
-            }]
-        })
-        interaction.channel.send({
             files: [
                 "./cars.txt"
             ]
