@@ -244,13 +244,14 @@ Drift Style: ${ dstyle||"N/A" }
     const usage=JSON.parse(
       readFileSync('./usage.json', 'utf-8')
     );
-    let original=usage.build.count;
+    let static=usage.build.count;
+    let original=usage.orchan.count;
     writeFileSync('./usage.json', `{
     "build": {
-        "count": ${ original+1 }
+        "count": ${ static+1 }
     },
     "orchan": {
-        "count": 0
+        "count": ${ original }
     }
 }`);
   }

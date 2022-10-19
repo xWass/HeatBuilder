@@ -91,13 +91,14 @@ module.exports={
         const usage=JSON.parse(
             readFileSync('./usage.json', 'utf-8')
         );
-        let original=usage.build.count;
+        let static=usage.build.count
+        let original=usage.orchan.count;
         writeFileSync('./usage.json', `{
     "build": {
-        "count": ${ original+1 }
+        "count": ${static}
     },
     "orchan": {
-        "count": 0
+        "count": ${original+1}
     }
 }`);
 
