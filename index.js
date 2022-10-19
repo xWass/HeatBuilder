@@ -66,8 +66,6 @@ for (const file of commandFiles) {
 
 client.on('interactionCreate', async (interaction) => {
 
-
-
     if (interaction.isAutocomplete()&&interaction.commandName==="build") {
         const raceBuilds=JSON.parse(
             readFileSync('./builds/track.json', 'utf-8')
@@ -110,6 +108,7 @@ client.on('interactionCreate', async (interaction) => {
 
     if (!command) return;
     console.log(`${ chalk.yellowBright('[EVENT FIRED]') } interactionCreate with command ${ interaction.commandName }`);
+    
     try {
         await command.execute(interaction, client);
     } catch (error) {

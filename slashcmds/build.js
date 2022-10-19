@@ -24,6 +24,7 @@ module.exports={
       )
     ),
   async execute(interaction, client) {
+    console.log(client)
 
     console.log(`${ chalk.greenBright('[EVENT ACKNOWLEDGED]') } interactionCreate with command build`);
     const type=interaction.options.getString('type');
@@ -59,7 +60,8 @@ module.exports={
             text: "Want to contribute? Head over to: https://github.com/xWass/HeatBuilder"
           }
         }],
-        ephemeral: true
+        color: 'GREEN',
+        ephemeral: true,
       });
       return;
     }
