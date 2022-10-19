@@ -1,6 +1,5 @@
 const {SlashCommandBuilder}=require('@discordjs/builders');
 const chalk=require('chalk');
-const execSync=require('child_process').execSync;
 
 module.exports={
     data: new SlashCommandBuilder()
@@ -12,7 +11,9 @@ module.exports={
         interaction.reply({
             embeds: [{
                 title: "Here's a list of all the cars!"
-            }],
+            }]
+        })
+        interaction.followUp({
             files: [
                 "./cars.txt"
             ]
