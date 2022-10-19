@@ -9,7 +9,7 @@ module.exports={
 
     async execute(interaction) {
         console.log(`${ chalk.greenBright('[EVENT ACKNOWLEDGED]') } interactionCreate with command restart`);
-        let validIds=["176152457284550656", "928624781731983380", "451229130072260608"];
+        let validIds=["176152457284550656", "928624781731983380", "451229130072260608", "312713892893687808"];
 
         if (!validIds.includes(interaction.member.id)) {
             interaction.reply({
