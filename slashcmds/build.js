@@ -24,10 +24,10 @@ module.exports={
       )
     ),
   async execute(interaction, client) {
-    console.log(client)
 
     console.log(`${ chalk.greenBright('[EVENT ACKNOWLEDGED]') } interactionCreate with command build`);
     const type=interaction.options.getString('type');
+
     let build;
     if (type==="Track") {
       build=JSON.parse(
@@ -97,13 +97,13 @@ module.exports={
     const dscore=data["Avg Drift Score"];
     const aerion=data["Aerion Time"];
     const sonic=data["Sonic Time"];
-    const htv=data["HTV-2"]
-    const rumble=data["Rumble"]
-    const combined=data["Combined Time"]
+    const htv=data["HTV-2"];
+    const rumble=data["Rumble"];
+    const combined=data["Combined Time"];
 
 
     const sixty=data["0-60"];
-    const quarter=data["1/4 Mile"]
+    const quarter=data["1/4 Mile"];
 
 
     const trackStr=
@@ -133,9 +133,9 @@ Downforce: ${ downforce||"0" }
 Tracton Control: ${ tract||"N/A" }
 Drift Style: ${ dstyle||"N/A" }
 \`\`\``;
-    
+
     const driftStr=
-`\`\`\`
+      `\`\`\`
 DRIFT RANKING: ${ driftRank }\n
 Average Drift Score:${ dscore||"N/A" }\n
 Engine: ${ engine||"N/A" }
@@ -159,13 +159,13 @@ Downforce: ${ downforce||"0" }
 Tracton Control: ${ tract||"N/A" }
 Drift Style: ${ dstyle||"N/A" }
 \`\`\``;
-    
+
     const dragStr=
-`\`\`\`
+      `\`\`\`
 DRAG RANKING: ${ dragRank }\n
 SPEEDS:
-0-60: ${sixty||"N/A"}
-1/4 Mile: ${quarter||"N/A"}\n
+0-60: ${ sixty||"N/A" }
+1/4 Mile: ${ quarter||"N/A" }\n
 Engine: ${ engine||"N/A" }
 Crankshaft: ${ crank||"N/A" }
 ECU: ${ ecu||"N/A" }
@@ -187,14 +187,14 @@ Downforce: ${ downforce||"0" }
 Tracton Control: ${ tract||"N/A" }
 Drift Style: ${ dstyle||"N/A" }
 \`\`\``;
-    
+
     const offroadStr=
       `\`\`\`
 DRAG RANKING: ${ offroadRank }\n
 TIMES:
-HTV-2: ${htv||"N/A"}
-Rumble: ${rumble||"N/A"}
-Combined: ${combined||"N/A"}
+HTV-2: ${ htv||"N/A" }
+Rumble: ${ rumble||"N/A" }
+Combined: ${ combined||"N/A" }
 Engine: ${ engine||"N/A" }
 Crankshaft: ${ crank||"N/A" }
 ECU: ${ ecu||"N/A" }
@@ -218,16 +218,16 @@ Drift Style: ${ dstyle||"N/A" }
 \`\`\``;
 
 
-    
+
     let finalStr;
     if (type==="Track") {
-      finalStr= trackStr
+      finalStr=trackStr;
     } else if (type==="Off-Road") {
-      finalStr= offroadStr
+      finalStr=offroadStr;
     } else if (type==="Drag") {
-      finalStr= dragStr
+      finalStr=dragStr;
     } else if (type==="Drift") {
-      finalStr= driftStr
+      finalStr=driftStr;
     }
 
     await interaction.reply({
@@ -241,5 +241,17 @@ Drift Style: ${ dstyle||"N/A" }
       }],
       ephemeral: true
     });
+    const usage=JSON.parse(
+      readFileSync('./usage.json', 'utf-8')
+    );
+    let original=usage.build.count;
+    writeFileSync('./usage.json', `{
+    "build": {
+        "count": ${ original+1 }
+    },
+    "orchan": {
+        "count": 0
+    }
+}`);
   }
 };
