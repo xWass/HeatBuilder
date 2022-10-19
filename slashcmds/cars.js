@@ -13,7 +13,7 @@ module.exports={
                 title: "Here's a list of all the cars!"
             }]
         })
-        interaction.followUp({
+        interaction.channel.send({
             files: [
                 "./cars.txt"
             ]
