@@ -7,11 +7,11 @@ module.exports={
         .setName('usage')
         .setDescription('View bot usage.'),
     async execute(interaction, client) {
-        const usage = require('../usage.json')
+        const usage=require('../usage.json');
         interaction.reply({
             embeds: [{
                 title: "Command Usage.",
-                description: `Build Request: ${usage.build.count} \nOrchan Build Request: ${usage.orchan.count}`,
+                description: `Build Request: ${ usage.build.count } \nOrchan Build Request: ${ usage.orchan.count }`,
                 color: 'GREEN',
             }],
             ephemeral: true

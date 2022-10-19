@@ -88,7 +88,7 @@ module.exports={
             }],
             ephemeral: true
         });
-        const json=require("./usage.json");
+        const json=require("../usage.json");
 
         json.orchan.count++;
 
