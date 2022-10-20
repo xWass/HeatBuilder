@@ -11,7 +11,8 @@ module.exports={
         interaction.reply({
             files: [
                 "./cars.txt"
-            ]
+            ],
+            ephemeral: true
         });
 
     }
