@@ -55,9 +55,9 @@ module.exports={
             interaction.reply({
                 embeds: [{
                     title: "There is not an available build for this car and type combination.",
-                    description: "Try using </orchan:1031943722583216169> instead! \n(Yes you can click on the command above :p)",
+                    description: "Try using </orchan:1031943722583216169> instead! \n(Yes you can click on the command above :p)\n\nNeed help? Join the support server! \nhttps://discord.gg/X58z9eQGek",
                     footer: {
-                        text: "Want to contribute? Head over to: https://github.com/xWass/HeatBuilder"
+                        text: "Want to contribute your build? Head over to: https://github.com/xWass/HeatBuilder"
                     }
                 }],
                 color: 'GREEN',
