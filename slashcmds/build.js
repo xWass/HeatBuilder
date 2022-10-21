@@ -130,7 +130,7 @@ Passive Auxiliary: ${ passive||"N/A" }\n
 LIVE TUNING:
 Steering Sensitivity: ${ sensitivity||"0" }
 Downforce: ${ downforce||"0" }
-Tracton Control: ${ tract||"N/A" }
+Traction Control: ${ tract||"N/A" }
 Drift Style: ${ dstyle||"N/A" }
 \`\`\``;
 
@@ -156,7 +156,7 @@ Passive Auxiliary: ${ passive||"N/A" }\n
 LIVE TUNING:
 Steering Sensitivity: ${ sensitivity||"0" }
 Downforce: ${ downforce||"0" }
-Tracton Control: ${ tract||"N/A" }
+Traction Control: ${ tract||"N/A" }
 Drift Style: ${ dstyle||"N/A" }
 \`\`\``;
 
@@ -184,7 +184,7 @@ Passive Auxiliary: ${ passive||"N/A" }\n
 LIVE TUNING:
 Steering Sensitivity: ${ sensitivity||"0" }
 Downforce: ${ downforce||"0" }
-Tracton Control: ${ tract||"N/A" }
+Traction Control: ${ tract||"N/A" }
 Drift Style: ${ dstyle||"N/A" }
 \`\`\``;
 
@@ -213,7 +213,7 @@ Passive Auxiliary: ${ passive||"N/A" }\n
 LIVE TUNING:
 Steering Sensitivity: ${ sensitivity||"0" }
 Downforce: ${ downforce||"0" }
-Tracton Control: ${ tract||"N/A" }
+Traction Control: ${ tract||"N/A" }
 Drift Style: ${ dstyle||"N/A" }
 \`\`\``;
 
