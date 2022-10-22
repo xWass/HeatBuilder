@@ -22,13 +22,13 @@ module.exports={
         const type=interaction.options.getString('type');
         let build;
         if (type==="Track") {
-            build="\`\`\`Porsche 911 Carrera RSR 2.8 '73 \nVolkswagen Beetle '63\nMcLaren F1 '93\nFerrari F40 '87\nMazda MX-5 '96\nNissan Skyline 2000 GT-R '71\nPagani Huayra BC '17\nNissan Silvia Spec-R Aero '02\nNissan Fairlady 240 ZG '71\nFord GT '17\`\`\`"
+            build="\`\`\`1. Porsche 911 Carrera RSR 2.8 '73\n2. Volkswagen Beetle '63\n3. McLaren F1 '93\n4. Ferrari F40 '87\n5. Mazda MX-5 '96\n6. Nissan Skyline 2000 GT-R '71\n7. Pagani Huayra BC '17\n8. Nissan Silvia Spec-R Aero '02\n9. Nissan Fairlady 240 ZG '71\n10. Ford GT '17\`\`\`"
         } else if (type==="Off-Road") {
-            build="\`\`\`Porsche 911 Carrera RSR 2.8 '73\nVolkswagen Beetle '63\nVolvo 242DL '75\nMazda MX-5 '96\nNissan 180SX Type X '96\nHonda Civic Type-R '00\nFord Mustang Foxbody '90\nPorsche Cayman GT4 '15\nMercedes AMG GT '15\nAcura RSX-S '04\`\`\`"
+            build="\`\`\`1. Porsche 911 Carrera RSR 2.8 '73\n2. Volkswagen Beetle '63\n3. Volvo 242DL '75\n4. Mazda MX-5 '96\n5. Nissan 180SX Type X '96\n6. Honda Civic Type-R '00\n7. Ford Mustang Foxbody '90\n8. Porsche Cayman GT4 '15\n9. Mercedes AMG GT '15\n10. Acura RSX-S '04\`\`\`"
         } else if (type==="Drag") {
-            build="\`\`\`Volkswagen Beetle '63\nFerrari LaFerrari '13 (1x15 NOS, Manual, 3rd Gear Launch)\nVolvo 242DL '75\nFerrari F40 '87\nPagani Huayra BC '17\nPorsche 911 Carrera RSR 2.8 '73\nHonda NSX Type-R '92\nNissan 180SX Type X '96\nMazda MX-5 '96\nFord Mustang Foxbody '90\`\`\`"
+            build="\`\`\`1. Volkswagen Beetle '63\n2. Ferrari LaFerrari '13 (1x15 NOS, Manual, 3rd Gear Launch)\n3. Volvo 242DL '75\n4. Ferrari F40 '87\n5. Pagani Huayra BC '17\n6. Porsche 911 Carrera RSR 2.8 '73\n7. Honda NSX Type-R '92\n8. Nissan 180SX Type X '96\n9. Mazda MX-5 '96\n10. Ford Mustang Foxbody '90\`\`\`"
         } else if (type==="Drift") {
-            build="\`\`\`Mazda RX-7 Spirit R '02\nNissan 350Z '08\nBuick Grand National '87\nChevrolet Corvette Z06 '13\nVolvo 242DL '75\nChevrolet Corvette Grand Sport K.S '17\nNissan Silvia Spec-R Aero '02\nMitsubishi Lancer Evolution IX '07\nNissan Fairlady 240 ZG '71\nNissan 370Z Heritage Edition '19\`\`\`"
+            build="\`\`\`1. Mazda RX-7 Spirit R '02\n2. Nissan 350Z '08\n3. Buick Grand National '87\n4. Chevrolet Corvette Z06 '13\n5. Volvo 242DL '75\n6. Chevrolet Corvette Grand Sport K.S '17\n7. Nissan Silvia Spec-R Aero '02\n8. Mitsubishi Lancer Evolution IX '07\n9. Nissan Fairlady 240 ZG '71\n10. Nissan 370Z Heritage Edition '19\`\`\`"
         }
 
         await interaction.reply({

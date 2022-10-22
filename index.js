@@ -113,7 +113,12 @@ client.on('interactionCreate', async (interaction) => {
         await command.execute(interaction, client);
     } catch (error) {
         console.error(error);
-        interaction.reply({content: `${ error }`, ephemeral: true});
+        interaction.reply({
+            embeds: [{
+                description: `An error has occurred! Message <@928624781731983380> with this information: \n\`\`\`Command Name: ${interaction.comandName} \nError: ${error}\`\`\``
+            }],
+            ephemeral: true
+        });
     }
 });
 client.login(process.env.TOKEN);
