@@ -104,8 +104,8 @@ client.on('interactionCreate', async (interaction) => {
         return;
 
     }
+    
     const command=client.SlashCommands.get(interaction.commandName);
-
     if (!command) return;
     console.log(`${ chalk.yellowBright('[EVENT FIRED]') } interactionCreate with command ${ interaction.commandName }`);
     
