@@ -102,7 +102,30 @@ client.on('interactionCreate', async (interaction) => {
             filtered.map(choice => ({name: choice, value: choice}))
         );
         return;
+    }
+    if (interaction.isButton()&&interaction.customId==='join') {
+        const meetupJSON=JSON.parse(
+            readFileSync('./meetup.json', 'utf-8')
+        );
+        if (!meetupJSON.enabled) {
+            interaction.reply({
+                embeds: [{
+                    title: "Meetup is closed!"
+                }],
+                ephemeral: true
+            });
+            return;
+        }
 
+
+        console.log(interaction.user.id)
+        const user=client.users.cache.get("928624781731983380")
+        user.send({
+            embeds: [{
+                description: `<@${ interaction.user.id }> has joined the meetup!`
+            }]
+        })
+        return;
     }
     
     const command=client.SlashCommands.get(interaction.commandName);
