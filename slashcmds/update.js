@@ -33,6 +33,7 @@ module.exports={
             execSync(('pm2 restart 0'), async (error, stdout) => {
                 return null;
             });
+            
         });
     }
 };
