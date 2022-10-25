@@ -3,7 +3,7 @@ const chalk=require('chalk');
 const {
     Client, Collection, Intents, MessageEmbed,
 }=require('discord.js');
-const {readFileSync, writeFileSync} = require('node:fs');
+const {readFileSync, writeFileSync}=require('node:fs');
 
 const intents=new Intents();
 intents.add(
@@ -76,13 +76,13 @@ client.on('interactionCreate', async (interaction) => {
                 `${ raceBuild["Car"] }`
             );
 
-        if (focusedValue.length <=2) {
-            return interaction.respond([])
+        if (focusedValue.length<=2) {
+            return interaction.respond([]);
         }
         const filtered=choices.filter(choice => choice.toLowerCase().includes(focusedValue.toLowerCase()));
         await interaction.respond(
             filtered.map(choice => ({name: choice, value: choice}))
-        )
+        );
         return;
     } else if (interaction.isAutocomplete()&&interaction.commandName==="orchan") {
         const raceBuilds=JSON.parse(
@@ -117,28 +117,31 @@ client.on('interactionCreate', async (interaction) => {
             return;
         }
 
-
-        console.log(interaction.user.id)
-        const user=client.users.cache.get("928624781731983380")
+        interaction.user.send({
+            embeds: [{
+                description: "You have joined the meetup! Send an in-game friend request to `xWassnt` to be invited!"
+            }]
+        });
+        const user=client.users.cache.get("928624781731983380");
         user.send({
             embeds: [{
                 description: `<@${ interaction.user.id }> has joined the meetup!`
             }]
-        })
+        });
         return;
     }
-    
+
     const command=client.SlashCommands.get(interaction.commandName);
     if (!command) return;
     console.log(`${ chalk.yellowBright('[EVENT FIRED]') } interactionCreate with command ${ interaction.commandName }`);
-    
+
     try {
         await command.execute(interaction, client);
     } catch (error) {
         console.error(error);
         interaction.reply({
             embeds: [{
-                description: `An error has occurred! Message <@928624781731983380> with this information: \n\`\`\`Command Name: ${interaction.comandName} \nError: ${error}\`\`\``
+                description: `An error has occurred! Message <@928624781731983380> with this information: \n\`\`\`Command Name: ${ interaction.comandName } \nError: ${ error }\`\`\``
             }],
             ephemeral: true
         });
