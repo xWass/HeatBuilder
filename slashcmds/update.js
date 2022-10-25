@@ -31,6 +31,8 @@ module.exports={
                 ephemeral: false
             });
         });
-        execSync('pm2 restart 0', {encoding: 'utf-8'});
+        execSync(('pm2 restart 0'), async (error, stdout) => {
+            return null;
+        });
     }
 };
