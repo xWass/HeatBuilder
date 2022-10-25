@@ -26,20 +26,11 @@ module.exports={
             await interaction.followUp({
                 embeds: [{
                     title: 'Output',
-                    description: `\`\`\`${ stdout||"Completed with no output." }\`\`\``,
+                    description: `\`\`\`${ stdout||"Completed with no output." }\`\`\`\n\nRestarting...`,
                 }],
                 ephemeral: false
             });
-        });
-        await interaction.followUp({
-            embeds: [{
-                description: "Restarting..."
-            }]
-        })
-        try {
             execSync('pm2 restart 0', {encoding: 'utf-8'});
-        } catch (err) {
-            console.log(err);
-        }
+        });
     }
 };
