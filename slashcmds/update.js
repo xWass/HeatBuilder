@@ -1,7 +1,7 @@
 const {
     SlashCommandBuilder
 }=require('@discordjs/builders');
-const {exec}=require('child_process');
+const {exec, execSync}=require('child_process');
 
 module.exports={
     data: new SlashCommandBuilder()
@@ -22,7 +22,7 @@ module.exports={
             return;
         }
         await interaction.deferReply();
-        exec(('git pull'), async (error, stdout) => {
+        execSync(('git pull'), async (error, stdout) => {
             await interaction.followUp({
                 embeds: [{
                     title: 'Output',
@@ -30,7 +30,7 @@ module.exports={
                 }],
                 ephemeral: false
             });
-            execSync('pm2 restart 0', {encoding: 'utf-8'});
         });
+        execSync('pm2 restart 0', {encoding: 'utf-8'});
     }
 };
