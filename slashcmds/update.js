@@ -22,7 +22,7 @@ module.exports={
             return;
         }
         await interaction.deferReply();
-        await execSync(('git pull'), async (error, stdout) => {
+        execSync(('git pull'), async (error, stdout) => {
             await interaction.followUp({
                 embeds: [{
                     title: 'Output',
@@ -30,9 +30,9 @@ module.exports={
                 }],
                 ephemeral: false
             });
-        });
-        execSync(('pm2 restart 0'), async (error, stdout) => {
-            return null;
+            execSync(('pm2 restart 0'), async (error, stdout) => {
+                return null;
+            });
         });
     }
 };
