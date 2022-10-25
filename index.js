@@ -119,7 +119,7 @@ client.on('interactionCreate', async (interaction) => {
 
         interaction.user.send({
             embeds: [{
-                description: "You have joined the meetup! Send an in-game friend request to `xWassnt` to be invited!"
+                description: "You have joined the meetup! Send an in-game friend request to `xWassnt` to be invited! \nGot a mic? Hop in <#965009350781452348>!"
             }]
         });
         const user=client.users.cache.get("928624781731983380");
