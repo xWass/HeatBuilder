@@ -22,7 +22,7 @@ module.exports={
             return;
         }
         await interaction.deferReply();
-        execSync(('git pull'), async (error, stdout) => {
+        exec(('git pull'), async (error, stdout) => {
             await interaction.followUp({
                 embeds: [{
                     title: 'Output',
