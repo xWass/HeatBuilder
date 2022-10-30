@@ -414,7 +414,7 @@
     "Turbo": "Ultimate Dual Turbo Charger",
     "Nitrous System": "Ultimate 5x3lb Tanks",
     "Suspension": "Stock Suspension",
-    "Brakes": "Super Brakes",
+    "Brakes": "Pro Brakes",
     "Tires": "Elite Race Tires",
     "Clutch": "Elite+ Clutch",
     "Gearbox": "7 Speed",
@@ -422,7 +422,7 @@
     "Auxiliary (Active)": "Elite Nitrous Refill",
     "Auxiliary (Passive)": "Elite Nitrous Duration",
     "Sensitivity": 5,
-    "Downforce": 4
+    "Downforce": 5
   },
   {
     "Tuned": "TRUE",
