@@ -102,6 +102,24 @@ client.on('interactionCreate', async (interaction) => {
             filtered.map(choice => ({name: choice, value: choice}))
         );
         return;
+    } else if (interaction.isAutocomplete()&&interaction.commandName==="sw") {
+        const raceBuilds=JSON.parse(
+            readFileSync('./builds/driftModBuilds.json', 'utf-8')
+        );
+        const focusedValue=interaction.options.getFocused();
+        const choices=raceBuilds
+            .map((raceBuild) =>
+                `${ raceBuild.Manufacturer } ​${ raceBuild['Car Name'] }`
+            );
+
+        if (focusedValue.length<=2) {
+            return interaction.respond([]);
+        }
+        const filtered=choices.filter(choice => choice.toLowerCase().includes(focusedValue.toLowerCase()));
+        await interaction.respond(
+            filtered.map(choice => ({name: choice, value: choice}))
+        );
+        return;
     }
     if (interaction.isButton()&&interaction.customId==='join') {
         const meetupJSON=JSON.parse(
