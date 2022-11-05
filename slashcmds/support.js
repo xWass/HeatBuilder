@@ -11,7 +11,7 @@ module.exports={
 
         await interaction.reply({
             embeds: [{
-                description: "Need help? Join here! \nhttps://discord.gg/X58z9eQGek\n\nWant to support this project? Message <@928624781731983380> or donate here: https://cash.app/$hoesinmydms"
+                description: "Need help? Join here! \nhttps://discord.gg/X58z9eQGek\n\nWant to support this project? Message <@928624781731983380> or donate here: https://cash.app/$hoesinmydms.\nI also accept Amazon gift cards at unknowndenial02@gmail.com "
             }],
             ephemeral: true
         });
