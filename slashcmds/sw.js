@@ -69,7 +69,7 @@ module.exports={
                 description: `\`\`\`Engine: ${ engine||"None" } \nCrankshaft: ${ crank||"None" } \nECU: ${ ecu||"None" } \nCooling: ${ cooling||"None" } \nExhaust: ${ exhaust||"None" } \nTurbo: ${ turbo||"None" } \nNitrous: ${ nos||"None" } \nSuspension: ${ suspension||"None" } \nBrakes: ${ brakes||"None" } \nTires: ${ tires||"None" } \nClutch: ${ clutch||"None" } \nGearbox: ${ gearbox||"None" } \nDifferential: ${ diff||"None" } \nActive Auxiliary: ${ active||"None" } \nPassive Auxiliary: ${ passive||"None" } \n\nLIVE TUNING: \nSteering Sensitivity: ${ sensitivity||"0" } \nDownforce: ${ downforce||"0" } \n\nCOST TO BUILD: ${ cost||"N/A" }\`\`\``,
                 color: 'GREEN',
                 footer: {
-                    text: `Thanks to Orchan#6179 and PCNW for supplying the builds and to the Caliber Gaming staff team for the support.\nMuch love - xWass <3`,
+                    text: `THESE BUILDS ARE BUILT TO BE USED WITH HAYEDUCE'S DRIFT MOD. USING THESE BUILDS WITH VANILLA GAMEPLAY IS NOT RECOMMENDED.`,
                 },
             }],
             ephemeral: true
